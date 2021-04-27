@@ -735,27 +735,27 @@ void Led_Time_Ctl(void)
     if (temp_hour != hour)
     {
 
-        if ((hour == 0) && (min < 5))
-        {
-            if (min == 1)
-            {
-                color_temp = 3400;
-            }
-            else if (min == 2)
-            {
-                color_temp = 3300;
-            }
-            else if (min == 3)
-            {
-                color_temp = 3200;
-            }
-            else if (min == 4)
-            {
-                color_temp = 3100;
-            }
-        }
+        // if ((hour == 0) && (min < 5))
+        // {
+        //     if (min == 1)
+        //     {
+        //         color_temp = 3400;
+        //     }
+        //     else if (min == 2)
+        //     {
+        //         color_temp = 3300;
+        //     }
+        //     else if (min == 3)
+        //     {
+        //         color_temp = 3200;
+        //     }
+        //     else if (min == 4)
+        //     {
+        //         color_temp = 3100;
+        //     }
+        // }
 
-        else if (((hour >= 1) && (hour <= 7)) || ((hour == 0) && (min >= 5)))
+        if ((hour >= 0) && (hour <= 7))
         {
             color_temp = 3000;
         }
@@ -908,12 +908,12 @@ void Led_Time_Ctl(void)
                 color_temp = 4100;
             }
         }
-        else if (((hour >= 17) && (hour <= 21)) || ((hour == 16) && (min >= 5)))
+        else if ((hour == 16) && (min >= 5))
         {
+
             color_temp = 4000;
-            //printf("灯自动运行2\r\n");
         }
-        else if ((hour == 22) && (min < 5))
+        else if ((hour == 17) && (min < 5))
         {
             if (min == 1)
             {
@@ -932,10 +932,33 @@ void Led_Time_Ctl(void)
                 color_temp = 3510;
             }
         }
-
-        else if (((hour > 22) && (hour <= 23)) || ((hour == 22) && (min >= 5)))
+        else if (((hour >= 18) && (hour <= 22)) || ((hour == 17) && (min >= 5)))
         {
             color_temp = 3500;
+            //printf("灯自动运行2\r\n");
+        }
+        else if ((hour == 23) && (min < 5))
+        {
+            if (min == 1)
+            {
+                color_temp = 3400;
+            }
+            else if (min == 2)
+            {
+                color_temp = 3300;
+            }
+            else if (min == 3)
+            {
+                color_temp = 3200;
+            }
+            else if (min == 4)
+            {
+                color_temp = 3100;
+            }
+        }
+        else if ((hour == 23) && (min >= 5))
+        {
+            color_temp = 3000;
         }
 
         if ((temp_hour == -1) || (human_status == HAVEHUMAN)) //开机或者开关控制，1s到达指定亮度
@@ -950,10 +973,10 @@ void Led_Time_Ctl(void)
         else if ((human_status == NOHUMAN) && (work_status != WORK_HAND))
         {
 
-            Led_DOWN_W(100, 800);
-            Led_DOWN_Y(100, 800);
-            Led_UP_W(100, 800);
-            Led_UP_Y(100, 800);
+            Led_DOWN_W(100, 1500);
+            Led_DOWN_Y(100, 1500);
+            Led_UP_W(100, 1500);
+            Led_UP_Y(100, 1500);
             //Led_Status = LED_STA_NOSER;
             printf("无人\r\n");
         }

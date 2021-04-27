@@ -38,7 +38,7 @@ uint16_t ctl_duty2;
 uint16_t ctl_duty1;
 
 //#define COLOR_CHANGE_TIME   600000
-#define COLOR_CHANGE_TIME 350000
+#define COLOR_CHANGE_TIME 30000  //350000
 #define ON_TIME 1000
 #define OFF_TIME 2000
 

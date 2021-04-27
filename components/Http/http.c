@@ -169,6 +169,15 @@ int32_t wifi_http_send(char *send_buff, uint16_t send_size, char *recv_buff, uin
     r = read(s, (uint16_t *)recv_buff, recv_size);
     ESP_LOGD(TAG, "r=%d,activate recv_buf=%s\r\n", r, (char *)recv_buff);
     close(s);
+    if(r>0)
+    {
+        parse_objects_heart(strchr(recv_buf, '{'));  
+        http_send_mes(POST_NOCOMMAND);   
+    } 
+    else
+    {
+        printf("hart recv 0!\r\n");
+    }  
     // printf("http send end!\n");
     return r;
 }

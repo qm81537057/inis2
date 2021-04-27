@@ -65,7 +65,7 @@ void timer_periodic_cb(void *arg) //200ms中断一次
 
     //uint8_t key = 0;
     timer_count++;
-    timer_count1++;
+    timer_count1++; 
     timer_count2++;
     nohuman_timer_count++;
     //printf("nohuman_timer_count=%lld\n", nohuman_timer_count);
@@ -110,7 +110,7 @@ void timer_periodic_cb(void *arg) //200ms中断一次
             Led_UP_Y(100, 1000);
         }
 
-        Localcalculationlunchtime(year, month, day, hour, min, ob_blu_json.T2_h, ob_blu_json.T2_m, ob_blu_json.T3_h, ob_blu_json.T3_m);
+        //Localcalculationlunchtime(year, month, day, hour, min, ob_blu_json.T2_h, ob_blu_json.T2_m, ob_blu_json.T3_h, ob_blu_json.T3_m);
 
         //ESP_LOGI("wifi", "free Heap:%d,%d", esp_get_free_heap_size(), heap_caps_get_free_size(MALLOC_CAP_8BIT));
 
@@ -222,10 +222,11 @@ void timer_periodic_cb(void *arg) //200ms中断一次
 
     if (human_status == HAVEHUMAN) //有人时，1s内右2个1则转为有人
     {
-        if (timer_count >= 10) //2s
+        if (timer_count >= 5) //3s
         {
+        printf("havehuman_count=%d\n", havehuman_count);
             timer_count = 0;
-            if (havehuman_count >= 4)
+            if (havehuman_count >= 1)
             {
                 human_status = HAVEHUMAN;
                 printf("human_status1=%d\n", human_status);
@@ -249,7 +250,7 @@ void timer_periodic_cb(void *arg) //200ms中断一次
         if (timer_count >= 10) //2s
         {
             timer_count = 0;
-            if (havehuman_count >= 6)
+            if (havehuman_count >= 3)
             {
                 if (human_status == NOHUMAN) //如当前是无人，立即上传有人
                 {
@@ -271,7 +272,7 @@ void timer_periodic_cb(void *arg) //200ms中断一次
         }
     }
 
-    if (nohuman_timer_count >= 900) //60s 1min
+    if (nohuman_timer_count >= 2700) //2700 9min
     {
         human_status = NOHUMAN;
         nohuman_timer_count = 0;

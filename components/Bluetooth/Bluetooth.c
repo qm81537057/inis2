@@ -405,13 +405,14 @@ static void gatts_profile_a_event_handler(esp_gatts_cb_event_t event, esp_gatt_i
         gl_profile_tab[PROFILE_A_APP_ID].service_id.id.uuid.len = ESP_UUID_LEN_16;
         gl_profile_tab[PROFILE_A_APP_ID].service_id.id.uuid.uuid.uuid16 = GATTS_SERVICE_UUID_TEST_A;
 
-        char BleName_N[10];
+        // char BleName_N[10];
+        char BleName_N[15];
         bzero(BleName_N, sizeof(BleName_N));
         bzero(BleName, sizeof(BleName));
-        strncpy(BleName_N, SerialNum, 5);
+        // strncpy(BleName_N, SerialNum,5);
         //memset(BleName, 0, sizeof(BleName));
         //sprintf(BleName, "%s-%s", ProductId, BleName_N);
-        snprintf(BleName, sizeof(BleName), "%s%s", "Intlite-IT1-", BleName_N);
+        snprintf(BleName, sizeof(BleName), "%s%s", "INIS-", SerialNum);
         //if (BleName[0] >= 61)
         //{
         //  BleName[0] = BleName[0] - 32;

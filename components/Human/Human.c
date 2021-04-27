@@ -16,7 +16,6 @@
 
 int human_gpio_value;
 uint8_t human_status;
-
 void Human_Init(void)
 {
     //配置继电器输出管脚
@@ -37,7 +36,7 @@ void Humanapp(void)
 
     human_gpio_value = gpio_get_level(GPIO_HUMAN); //读取人感电平
     ESP_LOGD(TAG, "human_gpio_value=%d\n", human_gpio_value);
-
+    //printf("human_gpio_value=%d\n", human_gpio_value);
     if (Wallkey_status == 0)
     {
         if (human_gpio_value == 1) //传感器报有人
