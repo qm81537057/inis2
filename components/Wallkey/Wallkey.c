@@ -19,7 +19,7 @@
 
 #define BUF_SIZE 100
 static const char *TAG = "WALLKEY";
-uint8_t Wallkey_status = 0;
+uint8_t Wallkey_status;
 uint64_t Wallkeytime_count;
 
 //uint8_t Key_Id[4] = {0x99, 0x17, 0x06, 0x00}; //{0x86, 0x6d, 0x02, 0x00};

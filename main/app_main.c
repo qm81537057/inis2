@@ -137,7 +137,7 @@ void timer_periodic_cb(void *arg) //200ms中断一次
         if (auto_ctl_count1 >= MAX_WALLKEY_TIME) //超时没收到平台自动控制指令,转本地计算 10min
         {
             auto_ctl_count1 = 0;
-            Wallkey_status = 0;
+            //Wallkey_status = 0;
             if (human_status == HAVEHUMAN)
             {
                 Up_Light_Status = 1;
@@ -152,7 +152,7 @@ void timer_periodic_cb(void *arg) //200ms中断一次
                 Led_UP_W(100, 800);
                 Led_UP_Y(100, 800);
                 Light_Status = NOLIGHT;
-                Wallkey_status = 0;
+                //Wallkey_status = 0;
                 //printf("human_status=%d\n", human_status);
             }
         }
@@ -165,7 +165,7 @@ void timer_periodic_cb(void *arg) //200ms中断一次
                 Led_UP_W(100, 800);
                 Led_UP_Y(100, 800);
                 Light_Status = NOLIGHT;
-                Wallkey_status = 0;
+               // Wallkey_status = 0;
                 //printf("human_status=%d\n", human_status);
             }
         }
@@ -250,7 +250,7 @@ void timer_periodic_cb(void *arg) //200ms中断一次
         if (timer_count >= 10) //2s
         {
             timer_count = 0;
-            if (havehuman_count >= 3)
+            if (havehuman_count >= 2)
             {
                 if (human_status == NOHUMAN) //如当前是无人，立即上传有人
                 {
