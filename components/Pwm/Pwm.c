@@ -732,8 +732,8 @@ void Led_Time_Ctl(void)
     int year, month, day, hour, min, sec;
     Rtc_Read(&year, &month, &day, &hour, &min, &sec);
 
-    if (temp_hour != hour)
-    {
+    // if (temp_hour != hour)
+    // {
 
         // if ((hour == 0) && (min < 5))
         // {
@@ -985,13 +985,13 @@ void Led_Time_Ctl(void)
             temp_hour = hour;
             temp_min = min;
             //Led_Color_CTL(color_temp, ON_TIME);
-            Led_Color_CTL(color_temp, COLOR_CHANGE_TIME);
+            Led_Color_CTL(color_temp, 350);
             strcpy(mqtt_json_s.mqtt_mode, "1");
 
             printf("灯自动运行2\r\n");
         }
         //printf("color_temp2=%d\r\n", color_temp);
-    }
+    // }
 }
 void Led_Time_Ctl_Task(void *arg)
 {
@@ -1004,7 +1004,7 @@ void Led_Time_Ctl_Task(void *arg)
 
             //printf("灯自动运行中\r\n");
         }
-        vTaskDelay(100 / portTICK_RATE_MS);
+        vTaskDelay(1000 / portTICK_RATE_MS);
     }
     //vTaskDelete(NULL);
 }
